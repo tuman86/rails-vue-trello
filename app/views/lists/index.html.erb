@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lists</h1>
+<%= link_to 'New List', new_list_path %>
+<hr />
+
+<%= tag.div id: :boards, data: { lists: @lists.to_json(include: :cards) } %>
+<!-- <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col-md-3">
+        <h3><%= list.name %></h3>
+      </div>
+    <% end %>
+</div> -->
+
+<br>
