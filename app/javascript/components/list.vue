@@ -2,9 +2,7 @@
   <div class=" list">
     <h3>{{ list.name }}</h3>
     <draggable v-model="list.cards" :options="{group: 'cards'}" class="dragArea" @change="cardMoved">
-      <div v-for="(card, index) in list.cards" class="card card-body ">
-          <h3>{{ card.name }}</h3>
-      </div>
+      <card v-for="card in list.cards" :card="card" :list="list"></card>
     </draggable>
 
       <a v-if="!editing" v-on:click="startEditing">Add a card..</a>
@@ -18,9 +16,10 @@
 
 <script>
   import draggable from 'vuedraggable'
+  import card from 'components/card'
 
   export default {
-    components: { draggable },
+    components: { card, draggable },
 
     props: ["list"],
 
@@ -91,20 +90,5 @@
 <style scoped>
 .dragArea {
   min-height: 20px;
-}
-
-
-.list {
-  background: #E2E4E6;
-  border-radius: 3px;
-  display: inline-block;
-  vertical-align: top;
-  padding: 10px;
-  margin-right: 20px;
-  width: 270px;
-}
-
-.card {
-  background: #fff;
 }
 </style>
